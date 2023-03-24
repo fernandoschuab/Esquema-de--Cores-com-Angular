@@ -1,4 +1,4 @@
-<div *ngFor="let color of colors" class="colummColor" [ngStyle]="{'border-right':  '5px solid', 'border-color': backgroundLight}">
+<div *ngFor="let color of colors" class="colummColor" [ngStyle]="{'border-right':  '5px solid', 'border-color': backgroundLight, 'color': colorText}">
   <input class="select"
   [(colorPicker)]="color.value"
   [cpCancelButton]="true"

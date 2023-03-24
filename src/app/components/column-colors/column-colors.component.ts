@@ -8,6 +8,7 @@ import { OutputFormat } from 'ngx-color-picker';
 })
 export class ColumnColorsComponent {
   @Input('colors')colors: Array<any> = [];
+  @Input('colorText')colorText: string = '#a1619c';
   backgroundLight: string = '#D9D8D9'
   public toggle: boolean = false;
 public outPutFormat: OutputFormat = 'hex';

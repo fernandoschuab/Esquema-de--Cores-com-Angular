@@ -1,9 +1,9 @@
 <div class="myTheme" [ngStyle]="{'background-color': backgroubdLight}">
-<app-column-colors [colors]="colors[0]"></app-column-colors>
-<app-column-colors [colors]="colors[1]"></app-column-colors>
-<app-column-colors [colors]="colors[2]"></app-column-colors>
-<app-column-colors [colors]="colors[3]"></app-column-colors>
-<app-column-colors [colors]="colors[4]"></app-column-colors>
+<app-column-colors [colors]="colors[0]" [colorText]="colorText"></app-column-colors>
+<app-column-colors [colors]="colors[1]" [colorText]="colorText"></app-column-colors>
+<app-column-colors [colors]="colors[2]" [colorText]="colorText"></app-column-colors>
+<app-column-colors [colors]="colors[3]" [colorText]="colorText"></app-column-colors>
+<app-column-colors [colors]="colors[4]" [colorText]="colorText"></app-column-colors>
 
 
 </div>
@@ -20,5 +20,7 @@
 [cpAddColorButton]="true"
 [cpAddColorButtonText]="'Adicionar'"
 [cpPosition]="'top'"
+
+(colorPickerChange)="gerarCorOposta($event)"
 [style.background]="backgroubdLight"
 />

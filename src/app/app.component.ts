@@ -6,6 +6,7 @@ import { ColorPickerService, Cmyk, OutputFormat } from 'ngx-color-picker';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  colorText: string = 'a1619c'
   constructor() {
     this.colors = this.fillColors(5, 5)
   }
@@ -41,14 +42,12 @@ export class AppComponent implements OnInit {
     }
  let midle = Math.round(matrixColors[0].length/2)-2
     for (let i = 0; i < rows; i++) {
- 
       let color = this.gerarCoresHex()
       let colorTemp = color;
       for (let j = midle; j < columns; j++) {
         if(j !==midle){
           colorTemp = this.aumentarBrilhoESaturacaoCorHex(colorTemp,10,-10)
         }
-     
 //  
         matrixColors[i][j] = { value: colorTemp };
       }
@@ -59,8 +58,6 @@ export class AppComponent implements OnInit {
         matrixColors[i][j] = { value: colorTemp };
       }
     }
-
-   
     return matrixColors;
   }
   gerarCoresHex() {
@@ -124,5 +121,60 @@ export class AppComponent implements OnInit {
       return Math.round(255 * color).toString(16).padStart(2, '0');
     };
     return `#${f(0)}${f(8)}${f(4)}`;
+  }
+  gerarCorOposta(corHex: string) {
+    // Remove o símbolo '#' do início do valor hexadecimal
+    const corSemHash = corHex.replace('#', '');
+    // Converte o valor hexadecimal em um número inteiro
+    const corInt = parseInt(corSemHash, 16);
+    // Inverte os bits do número inteiro e converte o resultado de volta para hexadecimal
+    const corIntOposta = 0xFFFFFF - corInt;
+    const corHexOposta = corIntOposta.toString(16).padStart(6, '0');
+    // Adiciona o símbolo '#' no início do valor hexadecimal resultante
+    const corOposta = `#${corHexOposta}`;
+  let res = this.calcularContraste(corHex,corOposta)
+  if(res<4){
+    let res2 = this.calcularContraste(corHex,'#000000')
+    if(res2<4){
+      this.colorText  = '#FFFFFF';
+    }else{
+      this.colorText  = '#000000';
+    }
+  }else{
+    this.colorText = corOposta;
+  }
+    // return corOposta;
+  }
+   calcularContraste(cor1: string, cor2: string): number {
+    // Converte as cores em valores RGBA
+    const rgba1 = this.hexToRgba(cor1);
+    const rgba2 = this.hexToRgba(cor2);
+    // Calcula a luminosidade relativa das cores
+    const l1 = this.calcularLuminosidadeRelativa(rgba1.r, rgba1.g, rgba1.b);
+    const l2 = this.calcularLuminosidadeRelativa(rgba2.r, rgba2.g, rgba2.b);
+    // Calcula o contraste entre as cores
+    const contraste = (l1 > l2) ? ((l1 + 0.05) / (l2 + 0.05)) : ((l2 + 0.05) / (l1 + 0.05));
+    // Retorna o valor do contraste
+    return contraste;
+  }
+   hexToRgba(hex: string): {r: number, g: number, b: number, a: number} {
+    // Remove o símbolo '#' do início do valor hexadecimal
+    const corSemHash = hex.replace('#', '');
+    // Converte o valor hexadecimal em valores RGB
+    const r = parseInt(corSemHash.substring(0, 2), 16);
+    const g = parseInt(corSemHash.substring(2, 4), 16);
+    const b = parseInt(corSemHash.substring(4, 6), 16);
+    // Retorna os valores RGB e a opacidade
+    return { r, g, b, a: 1 };
+  }
+   calcularLuminosidadeRelativa(r: number, g: number, b: number): number {
+    const rsrgb = r / 255;
+    const gsrgb = g / 255;
+    const bsrgb = b / 255;
+    const rlinear = (rsrgb <= 0.03928) ? (rsrgb / 12.92) : ((rsrgb + 0.055) / 1.055) ** 2.4;
+    const glinear = (gsrgb <= 0.03928) ? (gsrgb / 12.92) : ((gsrgb + 0.055) / 1.055) ** 2.4;
+    const blinear = (bsrgb <= 0.03928) ? (bsrgb / 12.92) : ((bsrgb + 0.055) / 1.055) ** 2.4;
+    const l = 0.2126 * rlinear + 0.7152 * glinear + 0.0722 * blinear;
+    return l;
   }
 }
