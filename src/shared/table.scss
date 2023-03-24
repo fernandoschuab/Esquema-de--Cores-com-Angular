@@ -1,0 +1,156 @@
+@import "./global.scss";
+.mat-paginator {
+  width: 100% !important;
+  float: left;
+  margin-bottom: 90px !important;
+}
+::ng-deep.mat-sidenav-content.mat-drawer-content {
+  position: relative !important;
+  // displey: flex;
+  width: 100% !important;
+  margin-left: 0px !important;
+  padding-left: 0px !important;
+  margin-right: 0px !important;
+  margin-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+.div-table {
+  width: calc(100% - 40px);
+  margin-left: 20px;
+}
+.icon-disabled {
+  // color: var(--accent-darker-color);
+  opacity: 0.2 !important;
+}
+.actions {
+  color: var(--text-primary-lighter) !important;
+  background-color: var(--accent-color) !important;
+   border-radius: 8px 0px 0px 8px !important;
+  // margin-top: 0.5rem;
+  margin-right: 0.8rem !important;
+  display: flex !important;
+  opacity: 0.7 !important;
+  // min-width: 60px;
+  width: 80px;
+  button {
+    min-width: 15px;
+    padding: 0px !important;
+    float: right;
+    margin-right: 3px !important;
+  }
+  button:first-child {
+    margin-right: 10px;
+  }
+  button:last-child {
+    // color: #4C805F;
+  }
+  flex-direction: row !important;
+  /* flex-wrap: wrap; */
+  justify-content: space-evenly !important;
+}
+.margem {
+  margin-top: 90px;
+}
+.mat-table {
+  width: 100%;
+  .mat-header-cell {
+    text-align: left;
+    // width: auto !important;
+  }
+  .mat-cell {
+    text-align: left;
+    // width: auto !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  ::ng-deep.mat-sidenav-content.mat-drawer-content {
+    display: flex !important;
+    width: 100% !important;
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 10px !important;
+  }
+  .tabela {
+    border-radius: 8px 8px 8px 8px !important;
+    // background-color: green;
+  }
+  .actions {
+    background-color: var(--accent-color) !important;
+    color: white;
+    height: 2.5rem !important;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: flex !important;
+    width: auto !important;
+    flex-direction: row !important;
+    /* flex-wrap: wrap; */
+    justify-content: space-evenly !important;
+    border-radius: 0px 0px 12px 12px !important;
+  }
+  .mat-table {
+    border: 0;
+    vertical-align: middle;
+    caption {
+      font-size: 1em;
+    }
+    mat-row,
+    mat-footer-row {
+      min-height: auto !important;
+    }
+    .mat-header-cell {
+      border: 10px solid;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    .mat-cell {
+      border-bottom: 1px solid var(--accent-lighter-color) !important;
+      display: block;
+      font-size: 1em;
+      text-align: right;
+      font-weight: normal;
+      height: auto;
+      // margin-bottom: 4%;
+    }
+    .mat-cell:before {
+      /*
+          * aria-label has no advantage, it won't be read inside a table
+          content: attr(aria-label);
+          */
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 1em;
+    }
+    .mat-cell:last-child {
+      border-bottom: 0;
+    }
+    .mat-cell:first-child {
+      margin-top: 4%;
+    }
+    .mat-row {
+      border-bottom: 8px solid var(--accent-lighter-color);
+      display: block;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+  }
+  // Enable this to hide header
+  .mat-table .mat-header-row {
+    height: 0px !important;
+    min-height: 0px !important;
+  }
+  .mat-table mat-cell:first-of-type {
+    padding-left: 0px !important;
+  }
+  .mat-table mat-cell:last-of-type,
+  mat-header-cell:last-of-type,
+  mat-footer-cell:last-of-type {
+    padding-right: 0px !important;
+  }
+}

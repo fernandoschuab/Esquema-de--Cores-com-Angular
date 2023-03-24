@@ -1,0 +1,153 @@
+@import "./global.scss";
+.mat-paginator {
+  width: 100% !important;
+  float: left;
+  margin-bottom: 90px !important;
+}
+
+::ng-deep.mat-sidenav-content.mat-drawer-content {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  margin-left: 0px !important;
+  padding-left: 0px !important;
+  margin-right: 0px !important;
+  margin-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+.div-table {
+  width: calc(100% - 40px);
+  margin-left: 20px;
+}
+.icon-disabled {
+  // color: var(--accent-darker-color);
+  opacity: 0.2 !important;
+}
+
+.margem {
+  margin-top: 90px;
+}
+.mat-table {
+  width: 100%;
+  .mat-header-cell {
+    text-align: left;
+
+    // width: auto !important;
+  }
+  .mat-cell {
+    text-align: left;
+    // width: auto !important;
+  }
+}
+
+
+.productSctock{
+color: #3f403f !important;
+}
+
+
+.totalQtde{
+  margin-left: 20px;
+opacity: 0.6;
+font-weight: bold;
+
+}
+@media screen and (max-width: 600px) {
+  ::ng-deep.mat-sidenav-content.mat-drawer-content {
+    display: flex !important;
+    width: 100% !important;
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 10px !important;
+  }
+  .tabela {
+    border-radius: 8px 8px 8px 8px !important;
+  }
+
+  .mat-table {
+    border: 0;
+    vertical-align: middle;
+    caption {
+      font-size: 1em;
+    }
+    mat-row,
+    mat-footer-row,
+    td {
+      min-height: auto !important;
+    }
+    .mat-header-cell,
+    .mat-header-row {
+      border: 10px solid;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    .mat-cell,
+    .headerTable {
+      border-bottom: 1px solid var(--accent-lighter-color) !important;
+      display: block;
+      font-size: 1em;
+      text-align: right;
+      font-weight: normal;
+      height: auto;
+      // margin-bottom: 4%;
+    }
+    .mat-cell:before,
+    .headerTable:before {
+      //problema
+
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 1em;
+    }
+    .mat-cell:last-child {
+      border-bottom: 0;
+    }
+    .mat-cell:first-child {
+      margin-top: 4%;
+    }
+    .mat-row {
+      border-bottom: 5px solid var(--accent-lighter-color);
+      display: block;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+  }
+  // Enable this to hide header
+  .mat-table .mat-header-row {
+    height: 0px !important;
+    min-height: 0px !important;
+  }
+  .mat-table mat-cell:first-of-type {
+    padding-left: 0px !important;
+  }
+  .mat-table mat-cell:last-of-type,
+  mat-header-cell:last-of-type,
+  mat-footer-cell:last-of-type {
+    padding-right: 0px !important;
+  }
+
+
+.productSctock{
+  // background-color: pink;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: center;
+  padding-top: 10px;
+
+
+}
+.totalQtde{
+  margin-left: 0px;
+opacity: 1;
+font-size: 1em;
+font-weight:300;
+}
+}

@@ -1,0 +1,17 @@
+<div *ngFor="let color of colors" class="colummColor" [ngStyle]="{'border-right':  '5px solid', 'border-color': backgroundLight}">
+  <input class="select"
+  [(colorPicker)]="color.value"
+  [cpCancelButton]="true"
+  [cpOKButton]="true"
+  [cpSaveClickOutside]="false"
+  [cpOKButtonClass]="'btn btn-primary btn-xs'"
+  [cpOutputFormat]="outPutFormat"
+  [cpAlphaChannel]="'disabled'"
+  [cpPresetColors]="['#fff', '#2889e9']"
+  [cpAddColorButton]="true"
+  [cpAddColorButtonText]="'Adicionar'"
+  [cpPosition]="'right'"
+  [style.background]="color.value"
+/>
+<div class="nameColor">{{color.value}}</div>
+</div>

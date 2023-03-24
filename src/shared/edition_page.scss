@@ -1,0 +1,48 @@
+.mat-line, mat-icon, .content-list-description, .center{
+color: var(--text-accent-color) !important;
+}
+.mat-sidenav-content.mat-drawer-content{
+  margin-left: 10px !important;
+    padding-left: 10px !important;
+    margin-right: 10px !important;
+    margin-top: 10px !important;
+}
+.complements{
+  width: calc(100% - 10px) !important;
+  border-radius: 20px;
+  background-color: var(--accent-lighter-color);
+  border: 1px solid var(--accent-darker-color);
+  margin-bottom: 20px !important;
+}
+.content_list{
+  margin-top: opx;
+  background-color: var(--accent-color);
+}
+.content-list-description{
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+.center{
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+@media screen and (max-width: 600px) {
+  ::ng-deep.mat-sidenav-content.mat-drawer-content {
+    display: block !important;
+    width: 100% !important;
+    margin-left: 10px !important;
+    padding-left: 10px !important;
+    margin-right: 10px !important;
+    margin-top: 10px !important;
+  }
+  .nComplements{
+    margin-top: 10px !important;
+    width: 100% !important;
+    float: left !important;
+  }
+  .mat-card-title{
+    font-size: 1.2rem !important;
+    padding-bottom: 10px !important;
+  }
+}
