@@ -31,12 +31,18 @@ export class AppComponent implements OnInit {
     for (let i = 0; i < rows; i++) {
       matrixColors[i] = [];
       let color = this.gerarCoresHex()
+      console.log('%cMyProject%cline:33%ccolor', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(222, 125, 44);padding:3px;border-radius:2px', color)
+      
+      
       let colorTemp = color;
+    
       for (let j = 0; j < columns; j++) {
-        colorTemp = this.ajustarCor(colorTemp,10,10)
- console.log('%cMyProject%cline:35%ca', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(237, 222, 139);padding:3px;border-radius:2px', colorTemp)
+        colorTemp = this.aumentarBrilhoCorHex(colorTemp,30)
+        console.log('%cMyProject%cline:39%ccolorTemp', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(56, 13, 49);padding:3px;border-radius:2px', colorTemp)
+        
+ 
 //  
-        matrixColors[i][j] = { value: color };
+        matrixColors[i][j] = { value: colorTemp };
       }
     }
     return matrixColors;
@@ -48,6 +54,30 @@ export class AppComponent implements OnInit {
     }
     return "#" + color;
   }
+
+   aumentarBrilhoCorHex(corHex: string, aumentoBrilho: number): string {
+    // Converte a cor hexadecimal em um objeto RGB
+    const corRgb = [
+      parseInt(corHex.substr(1, 2), 16),
+      parseInt(corHex.substr(3, 2), 16),
+      parseInt(corHex.substr(5, 2), 16)
+    ];
+  
+    // Aplica o aumento de brilho a cada componente RGB
+    const novaCorRgb = corRgb.map(c => Math.min(c + aumentoBrilho, 255));
+  
+    // Converte a nova cor RGB de volta para o formato hexadecimal
+    const novaCorHex = '#' + novaCorRgb.map(c => c.toString(16).padStart(2, '0')).join('');
+  
+    return novaCorHex;
+  }
+  
+
+
+
+
+
+
    ajustarCor(hex: string, saturacao: number, brilho: number): string {
     // converter a cor hexadecimal em RGB
     const r = parseInt(hex.substring(1,3), 16);
@@ -63,9 +93,10 @@ export class AppComponent implements OnInit {
     hsl[2] -= pctBri * (brilho / 100);
     // converter HSL de volta para RGB
     const rgb = this.hslToRgb(hsl[0], hsl[1], hsl[2]);
+    
     // converter RGB de volta para hexadecimal
     const novoHex = this.rgbToHex(rgb[0], rgb[1], rgb[2]);
-    console.log('%cMyProject%cline:67%cnovoHex', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(251, 178, 23);padding:3px;border-radius:2px', novoHex)
+    
     return novoHex;
   }
   // função auxiliar para converter RGB em HSL
@@ -99,6 +130,7 @@ export class AppComponent implements OnInit {
       r = g = b = l; // achromatic
     } else {
       const hue2rgb = (p: number, q: number, t: number) => {
+
         if (t < 0) t += 1;
         if (t > 1) t -= 1;
         if (t < 1 / 6) return p + (q - p) * 6 * t;
@@ -109,11 +141,14 @@ export class AppComponent implements OnInit {
       const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
       const p = 2 * l - q;
       r = hue2rgb(p, q, h + 1 / 3);
+      
       g = hue2rgb(p, q, h);
       b = hue2rgb(p, q, h - 1 / 3);
     }
-    console.log('%cMyProject%cline:115%cMath.round(r * 255), Math.round(g * 255), Math.round(b * 255)', 'color:#fff;background:#ee6f57;padding:3px;border-radius:2px', 'color:#fff;background:#1f3c88;padding:3px;border-radius:2px', 'color:#fff;background:rgb(118, 77, 57);padding:3px;border-radius:2px', Math.round(r * 255), Math.round(g * 255), Math.round(b * 255))
+    
+   
     return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+    // return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
    
   }
      rgbToHex(r: number, g: number, b: number): string {
