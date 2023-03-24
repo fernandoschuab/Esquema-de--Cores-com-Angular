@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ColorPickerService, Cmyk, OutputFormat } from 'ngx-color-picker';
+import { colorSchemesService } from './services/colorSchemes.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,7 +8,7 @@ import { ColorPickerService, Cmyk, OutputFormat } from 'ngx-color-picker';
 })
 export class AppComponent implements OnInit {
   colorText: string = 'a1619c'
-  constructor() {
+  constructor(private colorSrv: colorSchemesService) {
     this.colors = this.fillColors(5, 5)
   }
   ngOnInit(): void {
@@ -67,20 +68,7 @@ export class AppComponent implements OnInit {
     }
     return "#" + color;
   }
-   aumentarBrilhoCorHex1(corHex: string, aumentoBrilho: number): string {
-    // Converte a cor hexadecimal em um objeto RGB
-    const corRgb = [
-      parseInt(corHex.substr(1, 2), 16),
-      parseInt(corHex.substr(3, 2), 16),
-      parseInt(corHex.substr(5, 2), 16)
-    ];
-    // Aplica o aumento de brilho a cada componente RGB
-    const novaCorRgb = corRgb.map(c => Math.min(c + aumentoBrilho, 255));
-    // Converte a nova cor RGB de volta para o formato hexadecimal
-    const novaCorHex = '#' + novaCorRgb.map(c => c.toString(16).padStart(2, '0')).join('').replace('-', '')
-    ;
-    return novaCorHex;
-  }
+
    aumentarBrilhoESaturacaoCorHex(corHex: string, aumentoBrilho: number, aumentoSaturacao: number): string {
     // Converte a cor hexadecimal em um objeto HSL
     const corHsl = this.hexToHsl(corHex);
@@ -176,5 +164,14 @@ export class AppComponent implements OnInit {
     const blinear = (bsrgb <= 0.03928) ? (bsrgb / 12.92) : ((bsrgb + 0.055) / 1.055) ** 2.4;
     const l = 0.2126 * rlinear + 0.7152 * glinear + 0.0722 * blinear;
     return l;
+  }
+
+
+   saveColors(){
+  
+ this.colorSrv.saveColors(this.colors)
+ this.colors = this.colorSrv.getColorsById(1)
+
+
   }
 }
