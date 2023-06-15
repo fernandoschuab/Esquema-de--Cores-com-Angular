@@ -1,29 +1,49 @@
-<div class="myTheme" [ngStyle]="{'background-color': backgroubdLight}">
-<app-column-colors [colors]="colors[0]" [colorText]="colorText"></app-column-colors>
-<app-column-colors [colors]="colors[1]" [colorText]="colorText"></app-column-colors>
-<app-column-colors [colors]="colors[2]" [colorText]="colorText"></app-column-colors>
-<app-column-colors [colors]="colors[3]" [colorText]="colorText"></app-column-colors>
-<app-column-colors [colors]="colors[4]" [colorText]="colorText"></app-column-colors>
+<div class="vWebLab___container_body">
+  <mat-toolbar color="#2889e9" class="vWebLab___toolbar" >
+    <button mat-icon-button color="dark" (click)="toggle()">
+    
+      <mat-icon>menu</mat-icon>
+    </button>
+    
+    <h1>{{title}}</h1>
+    <span class="darkModeToggle">
+   
+      <span class="darkModeIcon">
+        <button *ngIf="darkMode" mat-icon-button class="lm"   (click)="toggleTheme()">
+          <mat-icon>brightness_7</mat-icon>
+        </button>
+        <button *ngIf="!darkMode" mat-icon-button (click)="toggleTheme()">
+          <mat-icon>brightness_4</mat-icon>
+        </button>
+        <button  mat-icon-button (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </span>
+    </span>
+  </mat-toolbar>
+  <mat-sidenav-container class="vWebLab___side-nav-container" [ngClass]="{'clear-margin-top': !isLogged}">
+    <mat-sidenav #sidenav mode="over">
+      <!-- <mat-nav-list>
+        <div *ngFor="let item of menu">
+          <h3 mat-subheader>{{item.grupo}}</h3>
+          <a *ngFor="let option of item.items" mat-list-item [routerLink]="option.url" (click)="sidenav.toggle()">
+            <mat-icon>{{option.icon}}</mat-icon>
+            <div class="menuText">  {{option.label}}</div>
+          
+          </a>
+        </div>
+      </mat-nav-list> -->
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <!-- <ngx-spinner></ngx-spinner> -->
+      <!-- <div class="simpleTable">
+      
 
-
+      </div> -->
+   
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+ 
+<!-- <app-orders></app-orders> -->
 </div>
-
-<input class="selectBackground"
-[(colorPicker)]="backgroubdLight"
-[cpCancelButton]="true"
-[cpOKButton]="true"
-[cpSaveClickOutside]="false"
-[cpOKButtonClass]="'btn btn-primary btn-xs'"
-[cpOutputFormat]="outPutFormat"
-[cpAlphaChannel]="'disabled'"
-[cpPresetColors]="['#fff', '#2889e9']"
-[cpAddColorButton]="true"
-[cpAddColorButtonText]="'Adicionar'"
-[cpPosition]="'top'"
-
-(colorPickerChange)="gerarCorOposta($event)"
-[style.background]="backgroubdLight"
-/>
-<button mat-icon-button (click)="saveColors()">
-  <!-- <mat-icon>brightness_4</mat-icon> -->
-</button>
