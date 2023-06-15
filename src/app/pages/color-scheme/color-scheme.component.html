@@ -1,29 +1,44 @@
-<div class="myTheme" [ngStyle]="{'background-color': backgroubdLight}">
-  <app-column-colors [colors]="colors[0]" [colorText]="colorText"></app-column-colors>
-  <app-column-colors [colors]="colors[1]" [colorText]="colorText"></app-column-colors>
-  <app-column-colors [colors]="colors[2]" [colorText]="colorText"></app-column-colors>
-  <app-column-colors [colors]="colors[3]" [colorText]="colorText"></app-column-colors>
-  <app-column-colors [colors]="colors[4]" [colorText]="colorText"></app-column-colors>
-  
-  
-  </div>
-  
-  <input class="selectBackground"
+<div class="myTheme" [ngStyle]="{ 'background-color': backgroubdLight }">
+  <app-column-colors
+    [colors]="colors[0]"
+    [colorText]="colorText"
+  ></app-column-colors>
+  <app-column-colors
+    [colors]="colors[1]"
+    [colorText]="colorText"
+  ></app-column-colors>
+  <app-column-colors
+    [colors]="colors[2]"
+    [colorText]="colorText"
+  ></app-column-colors>
+  <app-column-colors
+    [colors]="colors[3]"
+    [colorText]="colorText"
+  ></app-column-colors>
+  <app-column-colors
+    [colors]="colors[4]"
+    [colorText]="colorText"
+  ></app-column-colors>
+</div>
+
+<input
+  class="selectBackground"
   [(colorPicker)]="backgroubdLight"
   [cpCancelButton]="true"
   [cpOKButton]="true"
-  [cpSaveClickOutside]="false"
+  [cpPresetLabel]="
+  'Background'
+"  [cpSaveClickOutside]="false"
   [cpOKButtonClass]="'btn btn-primary btn-xs'"
   [cpOutputFormat]="outPutFormat"
   [cpAlphaChannel]="'disabled'"
-  [cpPresetColors]="['#fff', '#2889e9']"
-  [cpAddColorButton]="true"
+  [cpPresetColors]="['#fff', '#000000']"
+  [cpAddColorButton]="false"
   [cpAddColorButtonText]="'Adicionar'"
-  [cpPosition]="'top'"
-  
+  [cpPosition]="'auto'"
   (colorPickerChange)="gerarCorOposta($event)"
   [style.background]="backgroubdLight"
-  />
-  <button mat-icon-button (click)="saveColors()">
-    <!-- <mat-icon>brightness_4</mat-icon> -->
-  </button>
+/>
+<button mat-icon-button (click)="saveColors()">
+  <!-- <mat-icon>brightness_4</mat-icon> -->
+</button>
