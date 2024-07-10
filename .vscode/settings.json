@@ -3,5 +3,18 @@
     "activityBar.background": "#3C0482",
     "titleBar.activeBackground": "#5405B6",
     "titleBar.activeForeground": "#FBF9FF"
-  }
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**./angular/": true,
+    "**/angular": true,
+    "**/dist": true,
+    "**/node_modules": true
+  },
+  "hide-files.files": []
 }
